@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manav Mandal - Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: var(--dark-color);
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/prof.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #0b5ed7;
+        }
+        
+        .btn-light {
+            background: var(--light-color);
+            color: #333;
+        }
+        
+        .btn-light:hover {
+            background: #e2e6ea;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .about-text h3 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-img img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .skills {
+            background: #f8f9fa;
+        }
+        
+        .skills-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .skill-category {
+            flex-basis: 30%;
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f4f4f4;
+        }
+        
+        .skill-category ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .projects {
+            background: #fff;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 180px;
+            background: #ddd;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .project-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .experience {
+            background: #f8f9fa;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: #fff;
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12.5px;
+        }
+        
+        .right::after {
+            left: -12.5px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: #fff;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .timeline-content .date {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .contact {
+            background: #fff;
+        }
+        
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .contact-info {
+            flex-basis: 45%;
+        }
+        
+        .contact-form {
+            flex-basis: 50%;
+        }
+        
+        .contact-info h3, .contact-form h3 {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info .social {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .contact-info .social a:hover {
+            background: #0b5ed7;
+        }
+        
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .skill-category {
+                flex-basis: 100%;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .contact-info, .contact-form {
+                flex-basis: 100%;
+            }
+            
+            .contact-info {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Manav<span>Mandal</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Manav Mandal</h1>
+                <p>Data Scientist & Machine Learning Engineer</p>
+                <div>
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-light">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Data Scientist & ML Engineer</h3>
+                    <p>I am a data scientist and machine learning specialist with expertise in deep learning, computer vision, and natural language processing. My academic background includes a Master's in Data Science and a Bachelor's in Computer Engineering.</p>
+                    <p>Currently working as a Computer Vision Researcher at Indiana University School of Optometry, I focus on developing innovative solutions for infant visual development research using monocular depth estimation techniques.</p>
+                    <p>Previously, I worked as a Data Scientist at Imerit Technologies, where I engineered robust ETL pipelines, developed interactive dashboards, and led computer vision annotation projects.</p>
+                    <p>I'm passionate about solving complex problems using data-driven approaches and creating machine learning solutions that make a real-world impact.</p>
+                </div>
+                <div class="about-img">
+                    <img src="images/profile.jpeg" alt="Manav Mandal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/ad.png" alt="Ad Insertion">
+                    </div>
+                    <div class="project-content">
+                        <h3>Uninterrupted Ad Insertion</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Mask R-CNN</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
+                        <p>Implementation of Mask R-CNN to detect suitable regions in video frames and seamlessly insert advertisements without interrupting playback.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/optifood.jpg" alt="OptiFood">
+                    </div>
+                    <div class="project-content">
+                        <h3>OptiFood - Inventory Management</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML/CSS</span>
+                        </div>
+                        <p>Web application that predicts daily restaurant inventory needs using machine learning to reduce food wastage based on historical usage patterns.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/depth.jpg" alt="Monocular Depth Estimation">
+                    </div>
+                    <div class="project-content">
+                        <h3>Monocular Depth Estimation for Infant Visual Research</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+                        <p>Research investigating the effectiveness of monocular depth estimation techniques using deep learning approaches for studying infant visual development.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/musicClass.png" alt="Music Genre Classification">
+                    </div>
+                    <div class="project-content">
+                        <h3>Music Genre Classification with Deep Learning</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Audio Processing</span>
+                            <span class="tag">BERT</span>
+                            <span class="tag">CNN</span>
+                        </div>
+                        <p>Multi-modal approach for music genre classification combining audio features from spectrograms and lyrical analysis with BERT.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/service.jpg" alt="Service WOW">
+                    </div>
+                    <div class="project-content">
+                        <h3>Service WOW – AI-Powered Innovation Management</h3>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Gemini AI</span>
+                            <span class="tag">TailwindCSS</span>
+                        </div>
+                        <p>AI-powered platform for collecting, evaluating, and prioritizing innovation ideas within organizations, using AI to automate scoring and enable data-driven decision making.</p>
+                        <a href="https://servicewow.vercel.app/" target="_blank" class="btn">Live Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/krishna.jpg" alt="Krishna Chatbot">
+                    </div>
+                    <div class="project-content">
+                        <h3>Shri Krishna Chatbot</h3>
+                        <div class="project-tags">
+                            <span class="tag">RAGs</span>
+                            <span class="tag">Gemini API</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <p>Web-based chatbot that answers questions as Lord Krishna by referencing the Bhagavad Gita, providing wisdom with proper citations to source texts.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/personality.jpg" alt="Predict User Personality Type">
+                    </div>
+                    <div class="project-content">
+                        <h3>Predict User's Personality Type</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">RNN</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <p>Developed a model to predict a user's personality type (MBTI) based on their social media posts using bidirectional GRU networks.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/music.jpg" alt="Lyric Generation">
+                    </div>
+                    <div class="project-content">
+                        <h3>Music Lyric Generation</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">LSTM</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <p>TensorFlow project using bidirectional LSTM to generate lyrics to a song based on seed text with 56.69% accuracy.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/sentiment.jpg" alt="Sentiment Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3>Sentiment Analysis with Deep Learning</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">LSTM</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">GRU</span>
+                        </div>
+                        <p>Sentiment analysis model to identify positive and negative movie reviews using various neural network architectures including CNNs, single LSTMs, and multiple LSTMs.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/dogs.jpg" alt="Image Classifier">
+                    </div>
+                    <div class="project-content">
+                        <h3>Dogs and Cats Image Classifier</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Transfer Learning</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
+                        <p>Image classification model for distinguishing between cats and dogs using transfer learning with MobileNet architecture.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/pneumonia.png" alt="Pneumonia Detection">
+                    </div>
+                    <div class="project-content">
+                        <h3>Pneumonia Detection from X-Ray Images</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Transfer Learning</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">Medical Imaging</span>
+                        </div>
+                        <p>Used transfer learning with various models (MobileNet, VGG16, DenseNet) to detect pneumonia from chest X-ray images with 86.22% accuracy.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>        
+                
+                
+                
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/rock.png" alt="Rock Classification">
+                    </div>
+                    <div class="project-content">
+                        <h3>Rock Classification</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+                        <p>Applied various classification methods to predict rock categories (Igneous, Metamorphic, Sedimentary) based on 19 different rock features.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/dims.png" alt="Dimensionality Reduction">
+                    </div>
+                    <div class="project-content">
+                        <h3>Dimensionality Reduction & Unsupervised Learning</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">PCA</span>
+                        </div>
+                        <p>Explored different dimensionality reduction techniques (PCA, t-SNE, LLE, MDS) on rock image dataset and compared performance of clustering algorithms.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/transfer.png" alt="Transfer Learning">
+                    </div>
+                    <div class="project-content">
+                        <h3>Transfer Learning for Image Classification</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Transfer Learning</span>
+                        </div>
+                        <p>Used transfer learning for custom image classification, achieving 85.5% accuracy with MobileNetV2 compared to 63.7% with a model trained from scratch.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/movie.jpg" alt="Movie Review Website">
+                    </div>
+                    <div class="project-content">
+                        <h3>Movie Review Website</h3>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">NodeJS</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">React</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <p>Full-stack website providing ratings, reviews, and movie information with user authentication for submitting personal reviews.</p>
+                        <a href="https://hissing-cheddar-erica.glitch.me/" target="_blank" class="btn">Live Demo</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/player.png" alt="Player Management">
+                    </div>
+                    <div class="project-content">
+                        <h3>Player Management System</h3>
+                        <div class="project-tags">
+                            <span class="tag">SQL Alchemy</span>
+                            <span class="tag">HTML/JS/CSS</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Dash App</span>
+                        </div>
+                        <p>Web-based system for managing football team players with database integration and dashboard for visualizing player attributes and performance.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="images/tokyo.png" alt="Tokyo Olympics">
+                    </div>
+                    <div class="project-content">
+                        <h3>Data Transformation Pipeline for Tokyo Olympics</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Microsoft Azure</span>
+                            <span class="tag">Data Engineering</span>
+                        </div>
+                        <p>Created a data pipeline using Microsoft Azure services to collect, transform, and analyze comprehensive data from the Tokyo Olympics.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Corrected Experience Section -->
+<section id="experience" class="experience">
+    <div class="container">
+        <h2>My Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Computer Vision Researcher</h3>
+                    <div class="date">April 2024 - Present</div>
+                    <p>Indiana University School of Optometry, Bloomington, IN</p>
+                    <ul>
+                        <li>Researching monocular depth estimation techniques for infant visual development studies</li>
+                        <li>Implementing deep learning models for analyzing visual data from head-mounted cameras</li>
+                        <li>Contributing to National Eye Institute funded research on visual information processing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>MS Data Science</h3>
+                    <div class="date">August 2023 - May 2025</div>
+                    <p>Indiana University, Bloomington, IN</p>
+                    <p>Focused on deep learning, computer vision, and natural language processing applications.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Data Scientist</h3>
+                    <div class="date">July 2021 - August 2022</div>
+                    <p>Imerit Technologies, Remote</p>
+                    <ul>
+                        <li>Architected enterprise-wide data warehouse infrastructure in Snowflake, reducing query execution time by 78%</li>
+                        <li>Developed advanced statistical models identifying $2.4M in revenue opportunities through churn prediction with 83% accuracy</li>
+                        <li>Built modular ETL framework with fault-tolerance and validation gates, reducing pipeline failures by 92%</li>
+                        <li>Created comprehensive Tableau dashboards enabling C-suite to track KPIs across business functions</li>
+                        <li>Led computer vision annotation projects, achieving 97% segmentation accuracy</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>BE Computer Engineering</h3>
+                    <div class="date">August 2019 - May 2023</div>
+                    <p>Developed strong foundations in software development, algorithms, and computer architecture.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Languages & Tools</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>JavaScript</li>
+                        <li>HTML/CSS</li>
+                        <li>Node.js</li>
+                        <li>React</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Science & ML</h3>
+                    <ul>
+                        <li>TensorFlow / PyTorch</li>
+                        <li>Computer Vision</li>
+                        <li>NLP</li>
+                        <li>Statistical Modeling</li>
+                        <li>Deep Learning</li>
+                        <li>Data Mining</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Engineering</h3>
+                    <ul>
+                        <li>ETL Pipelines</li>
+                        <li>Snowflake</li>
+                        <li>PostgreSQL</li>
+                        <li>Google Cloud Platform</li>
+                        <li>Microsoft Azure</li>
+                        <li>Data Warehousing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Visualization</h3>
+                    <ul>
+                        <li>Tableau</li>
+                        <li>Power BI</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                        <li>Plotly</li>
+                        <li>D3.js</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <ul>
+                        <li>scikit-learn</li>
+                        <li>LSTM/RNN</li>
+                        <li>CNN</li>
+                        <li>GRU</li>
+                        <li>Transfer Learning</li>
+                        <li>RAGs</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Other</h3>
+                    <ul>
+                        <li>Research Design</li>
+                        <li>Agile Methodology</li>
+                        <li>Technical Mentoring</li>
+                        <li>Performance Optimization</li>
+                        <li>API Development</li>
+                        <li>Data Annotation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to me for collaboration opportunities, project inquiries, or just to connect!</p>
+                    <p><i class="fas fa-envelope"></i> mmanav.3101@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bloomington, Indiana</p>
+                    <div class="social">
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Me a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Manav Mandal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Contact form functionality
+        const contactForm = document.getElementById('contact-form');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real implementation, you would send the form data to your server
+                // For this demo, we'll just show an alert
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
